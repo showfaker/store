@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>逊然旖旎_博客用户注册页面</title>
+    <meta name="Keywords" content="逊然旖旎_博客用户注册页面" />
+    <meta name="Description" content="逊然旖旎_博客用户注册页面" />
+    <link rel="icon" href="default/images/index/blog.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="default/css/register.css">
+    <link rel="stylesheet" href="default/css/font-awesome.min.css" />
+    <script type="text/javascript" src="default/js/jquery-1.10.2.min.js"></script>    
+    <script type="text/javascript" src="default/js/login.js"></script>
+</head>
+
+<body>
+    <div class="register-wrapper">
+        <div class="register">
+            <header>
+                <h1>欢迎注册</h1>
+                <div>已有账号，请 <a href="/login">登录</a>或<a href="/">返回首页</a>
+                </div>
+            </header>
+            <div>
+                <span><i class="icon-user"></i></span>
+                <input type="text" placeholder="输入您的真实姓名" name="cusname" class="cusname" onFocus="customer.register.focus('name')" onBlur="customer.register.blur('name')">
+                <div class="tips tips-name">请输入真实的姓名，方便管理和联系</div>
+                <div class="error error-name">姓名格式不正确</div>
+            </div>
+            <div>
+                <span><i class="icon-phone"></i></span>
+                <input type="text" placeholder="输入您的手机号码" name="cusphone" class="cusphone" onFocus="customer.register.focus('phone')" onBlur="customer.register.blur('phone')">
+                <div class="tips tips-phone">请输入您的手机号码</div>
+                <div class="error error-phone">手机格式格式不正确</div>
+            </div>
+            <div>
+                <span><i class="icon-book"></i></span>
+                <input type="text" placeholder="输入您的昵称" name="cusnickname" class="cusnickname" onFocus="customer.register.focus('nickname')" onBlur="customer.register.blur('nickname')">
+                <div class="tips tips-nickname">1-6个汉字、数字、字母组成</div>
+                <div class="error error-nickname">昵称格式不对</div>
+            </div>
+            <div>
+                <span><i class="icon-lock"></i></span>
+                <input type="password" placeholder="输入您的密码" name="cuspwd" class="cuspwd" onFocus="customer.register.focus('pwd')" onBlur="customer.register.blur('pwd')">
+                <div class="tips tips-pwd">6-16位由字母、数字或下划线组成的字符串</div>
+                <div class="error error-pwd">密码格式不正确</div>
+            </div>
+            <div>
+                <span><i class="icon-lock"></i></span>
+                <input type="password" placeholder="再次输入您的密码" name="cuspwd2" class="cuspwd2" onFocus="customer.register.focus('pwd2')" onBlur="customer.register.blur('pwd2')">
+                <div class="tips tips-pwd2">两次输入的密码需要一致</div>
+                <div class="error error-pwd2">两次输入的密码不一致</div>
+            </div>
+            <p><input type="button" class="submit" value="注册" onclick="customer.register.submit()"></p>
+            <div class="result"></div>
+            <div class="red"></div>
+        </div>
+    </div>
+</body>
+
+</html>

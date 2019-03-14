@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误提示页面</title>
+    <link rel="icon" href="{{_host}}/assets/images/admin.ico" type="image/x-icon">
+    <meta http-equiv="refresh" content="5; url={{redirect}}" />
+    <link href="{{_host}}/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{_host}}/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{_host}}/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="{{_host}}/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="{{_host}}/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="{{_host}}/assets/css/basic.css" />
+    <script src='{{_host}}/assets/js/jquery-2.0.3.min.js'></script>
+    <script src="{{_host}}/assets/js/ace-extra.min.js"></script>
+    <script>
+        $(function () {
+            /**
+             *  登录失败页面的三秒倒计时
+             */
+            var timer = parseInt($("#time").text());
+            setInterval(function () {
+                if (timer <= 0) {
+                    $("#rolling").text("正在跳转中。。。");
+                    return;
+                }
+                timer--;
+                $("#time").text(timer);
+            }, 1000)
+        })
+    </script>
+</head>
+<body>
+
+<div class="navbar navbar-default" id="navbar">
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="icon-leaf"></i>
+                    逊然旖旎_博客CMS管理系统
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.container -->
+</div>
+
+        <div class="error-container">
+            <div class="well">
+                <h1 class="grey lighter smaller">
+                    <i class="icon-wrench icon-animated-wrench bigger-125"></i>          {{message}}
+                </h1>
+
+                <hr>
+                <h3 id="rolling" class="lighter smaller">
+                   网页<span id="time" style="color: red;">5</span>秒后将自动跳转...
+                </h3>
+                <div class="space"></div>
+                <div class="center">
+                    <a href="{{redirect}}" class="btn btn-grey">
+                        <i class="icon-arrow-left"></i>
+                        立即返回
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

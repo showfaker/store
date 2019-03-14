@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{setting.site_title}}</title>
+  <meta name="Keywords" content="{{setting.site_keywords}}" />
+  <meta name="Description" content="{{setting.site_description}}" />
+  <link rel="icon" href="default/images/index/blog.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="default/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="default/css/swiper.min.css" />
+  <script type="text/javascript" src="default/js/swiper.min.js"></script>
+</head>
+
+{{include 'reseption/public/header.html'}}
+<body>
+  <div id="banner-wrapper">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {{each focus}}
+        <div class="swiper-slide">
+          <img src="{{$value.pic}}" alt="{{$value.title}}" class="img-responsive" />
+        </div>
+        {{/each}}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev swiper-button-white"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+  </div>
+  <!-- 首頁介紹 -->
+  <div class="blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" id="blog-title">
+          <h2>个人博客 Personal Blog </h2>
+          <h3>座右铭：谦逊、自然</h3>
+        </div>
+        <div class="col-md-4" id="main_mid">
+          <div class="main_mid main_top-wrapper sdiv" data-animation="on" id="first-step">
+            <div class="main_top">
+                <h3>技术开发 Technological Development</h3>
+                <h4>目前从事着网站开发工作，并热爱着技术开发。虽然非科班出身，但自学了以下技术：<br>
+                  java(java SE)软件<br>
+                  javascript脚本语言<br>
+                  ionic3移动端<br>
+                  nodeJS服务器语言<br>
+                  koa2框架<br>
+                </h4>
+                <img src="default/images/mian2_image2.jpg" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="main_mid main_top-wrapper sdiv" data-animation="on">
+                <div class="main_top">
+                    <h3>经典文献 Classical Documents</h3>
+                    <h4>喜欢比较讽刺现实、逻辑推理和历史军事的小说或电影作品，如柯南道尔的《夏洛特福尔摩斯探案系列》、横沟正史的《金田一探案集》以及丹丘的《1908远东狂人》。最爱的电影有姜文的《鬼子来了》、《太阳照常升起》、《让子弹飞》和贝纳尔多·贝托鲁奇的《末代皇帝》。
+                    </h4>
+                    <img src="default/images/mian2_image1.jpg"/>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="main_mid main_top-wrapper sdiv" data-animation="on">
+                <div class="main_top">
+                    <h3>日常生活 Daily Life</h3>
+                    <h4>平时听比较小众的纯音乐和电音，乐器方面目前只会吉他，喜欢日漫和《秦时明月》系列的国漫。喜欢的音乐人作品有坂本龙一的Merry Christmas Mr.Lawrence、三輪学的Old Memory、Alan Walker的Faded等。最爱的经典番剧《ClANNAD》、《缘之空》、《只有我不存在的城市》、《to love》等。</h4>
+                    <img src="default/images/mian2_image3.jpg" />
+                </div>
+              </div>
+        </div>
+
+        <div class="col-md-12">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom_model">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <h2>强烈推荐 Highlycommended</h2>
+          <div class="main_top-wrapper sdiv" data-animation="on">
+              <h3>平时生活中的一些感悟和想法，有开发文档、原创小说、影视点评以及美文欣赏。</h3>
+          </div>   
+        </div>
+        <div class="col-md-12">
+          <div class="main_menu main_top-wrapper sdiv" data-animation="on">
+              <div class="main_bottom-nav">
+                  <a href="#" style=" font-weight:900; background:#f75a53;">开发文档<img src="default/images/jiao.png" alt="逊然旖旎_箭头" class="arrow_img"/></a>
+                  <a href="#">原创小说</a>
+                  <a href="#">评古论今</a>
+                  <a href="#">美文欣赏</a>
+                  </div>
+          </div>
+        </div>
+        <div class="col-md-12 main_top-wrapper sdiv" data-animation="on">
+          <div class="col-md-4">
+              <a href="#"><img src="default/images/mian3_image1.jpg" alt=""/></a>
+          </div>
+          <div class="col-md-4">
+              <a href="#"><img src="default/images/mian3_image2.jpg" alt="&nbsp;" /></a>
+          </div>
+          <div class="col-md-4">
+              <a href="#"><img src="default/images/mian3_image3.jpg"  alt="&nbsp;"/></a>
+          </div>
+          <div class="col-md-4">
+              <a href="#" style=" margin-bottom:0"><img src="default/images/mian3_image4.jpg" alt="&nbsp;" /></a>
+          </div>
+          <div class="col-md-4">
+              <a href="#" style=" margin-bottom:0"><img src="default/images/mian3_image5.jpg" alt="&nbsp;"/></a>
+          </div>
+          <div class="col-md-4">
+              <a href="#"><img src="default/images/mian3_image6.jpg"  alt="&nbsp;"/></a>
+          </div>
+        </div>           
+      </div>            
+    </div>      
+</div>
+  {{include 'reseption/public/footer.html'}}
+  <script>
+    var mySwiper = new Swiper('.swiper-container', {
+      effect: 'fade',
+      loop: true,
+      // paginationClickable: true,
+      autoplay: true,
+      // speed: 1000,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      // autoplayDisableOnInteraction: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }
+    })
+    $(document).ready(function () {
+        isScroll.init('.main_top-wrapper');
+    });
+  </script>
+
+
+</body>
+
+</html>

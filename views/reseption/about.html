@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{{setting.site_title}}_关于博客</title>
+<!-- <meta name="Keywords" content="{{setting.site_keywords}}" />
+<meta name="Description" content="{{setting.site_description}}" /> -->
+<link rel="icon" href="default/images/index/blog.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css"/>
+<link rel="stylesheet" type="text/css" href="default/css/about.css" />
+</head>
+<body>
+{{include 'reseption/public/header.html'}}
+<div id="header_nav-wrapper_about">
+    <div class="header_nav"></div>
+</div>
+
+<div id="main_about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>技术汇总</h2>
+                <p>1、前台主要通过bootstrap响应式布局并结合ace模板打造导航栏等相关布局，轮播动画采用则是jquery中的swiper插件，文章内容的展示和编辑采用的ueditor富文本编辑器。</p>
+                <p>2、后台代码用node.js服务器语言实现，采用Koa2(express衍生下了的)框架，前后端代码分离，后端代码在router路由文件夹中。</p>
+                <p>3、数据库则是采用mongoDB，因为考虑到访问用户应该不是太多，就没有用mysql了，便于前期维护和管理，后面会考虑mysql数据库。</p>
+                <p>4、本网站开发时间较短，所以前台就没有考虑用vue、react或者angular前端框架，后面时间充裕必定使用。</p>
+            </div>
+            <div class="col-md-12">
+                <h2>搭建环境</h2>
+                <p>1、服务器：弹性云服务器。</p>
+                <p>2、操作系统：Windows 8。</p>
+                <p>3、网站服务环境：node 10.8.0、npm 6.2.0、nginx 1.13.12。</p>
+                <p>4、数据库: mongoDB 4.0.1</p>
+            </div>
+            <div class="col-md-12">
+                <h2>网站部分开发功能介绍</h2>
+                <h3>用户登录注册</h3>
+                <p>采用koa.cookie、sessionStorage保存用户登录状态，并通过ctx.state存储path路径用于页面交互。</p>
+                <h3>添加/修改文章</h3>
+                <p>
+结合百度富文本编辑器实现文章的编辑和显示功能，需要通过npm下载UEditor的node版本适应包，然后编写后台代码配置相关路径,实现图片和附件的上传和显示功能。
+                </p>
+
+                <h3>后台api异步和数据库编程</h3>
+                <p>本站由于是Koa2框架开发，所以使用了async异步访问方式以及await解决数据库及页面跳转产生的Promise对象，这样开发起来非常方便。</p>
+            </div>
+            <div class="col-md-12">
+                <h2>后记</h2>
+                <p>这是本人上传的第一个版本博客，当然有着诸多不足和缺陷，十分欢迎牛逼的大神或者对开发感兴趣的朋友在评论留言中提出批评、建议，我也会定期查看评论，听取你们的建议，及时修改更新、不断完善自己的博客，在此真诚的感谢各位的浏览访问，谢谢！</p>
+                <p>我的邮箱：zhstyle@139.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{include 'reseption/public/footer.html'}}
+</body>
+</html>

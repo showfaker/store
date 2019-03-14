@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CMS后台管理系统登录</title>
+		<link rel="icon" href="{{_host}}/assets/images/admin.ico" type="image/x-icon">
+		<!-- basic styles -->
+		<link href="{{_host}}/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="{{_host}}/assets/css/font-awesome.min.css" />
+		<!-- fonts -->
+		<link rel="stylesheet" href="{{_host}}/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="{{_host}}/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="{{_host}}/attach/css/login.css" />
+		<script type="text/javascript" src="{{_host}}/default/js/canvas.js"></script>
+		<script type="text/javascript" src="{{_host}}/default/js/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" href="{{_host}}/assets/css/bootstrap.min.css" />
+		<script type="text/javascript" src="{{_host}}/default/js/login.js"></script>
+		<script src='{{_host}}/assets/js/jquery-2.0.3.min.js'></script>
+		<script src="{{_host}}/attach/system/login.js"></script>
+		<script>
+			$(function () {
+				//点击刷新验证码
+				$("#code-img").click(function () {
+					$(this).attr("src", "{{_host}}/admin/login/code?t="+Math.random());
+				});
+			})
+		</script>
+	</head>
+
+	<body class="login-layout">
+		<div class="main-container">
+		<canvas id="J_dotLine" style="background-color: #1d1925;"></canvas>
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">	
+											<h2 class="header blue lighter bigger center">
+												后台管理系统
+											</h2>
+
+											<div class="space-6"></div>
+
+											<form action="/admin/login/tologin" method="post" id="loginForm">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" id="username" name="username" class="form-control" placeholder="用户名" />
+															<i class="icon-user"></i>
+														</span>
+														<div class="error-message input-name">请输入4-12位用户名(文字、字母、数字)</div>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" id="password" name="password" class="form-control" placeholder="密码" />
+															<i class="icon-lock"></i>
+														</span>
+														<div class="error-message input-pwd">请输入正确的密码</div>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right" id="input-code">
+															<input type="text" id="code" name="code" class="form-control" placeholder="验证吗" style="width:200px;float:left;" />
+															<img style="float:right;" id="code-img" src="{{_host}}/admin/login/code" alt="">
+														</span>
+														<div class="error-message input-code">请输入验证码</div>
+													</label>
+
+													<div class="space"></div>
+
+													<div class="clearfix">
+														<label class="inline">
+															<input type="checkbox" class="ace" />
+															<span class="lbl"> Remember Me</span>
+														</label>
+
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+															<i class="icon-key"></i>
+															登录
+														</button>
+													</div>
+
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+
+											
+											
+										</div><!-- /widget-main -->
+
+										
+									</div><!-- /widget-body -->
+
+								</div><!-- /login-box -->
+							
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+	
+</body>
+</html>

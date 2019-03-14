@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{{setting.site_title}}_{{caseSetting.title}}</title>
+	<meta name="Keywords" content="{{caseSetting.keywords}}" />
+	<meta name="Description" content="{{caseSetting.description}}" />
+    <link rel="icon" href="default/images/index/blog.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/successful_case.css" />
+</head>
+
+<body>
+	{{include 'reseption/public/header.html'}}
+	<div id="header_nav-wrapper_case">
+		<div class="header_nav">
+			<h2>书香门第 &#160; <span>文章是知识最直接的体现。它是心灵的释放、也是梦想的绽放、更是灵魂的触动。</span></h2>
+		</div>
+	</div>
+
+	<div id="header_title-wrapper">
+		<div class="header_cate">
+			{{each cateResult}}
+			<a href="/case?pid={{@$value._id}}" {{if pid == $value._id}} class="active" {{/if}}>{{$value.title}}</a>
+			{{/each}}
+		</div>
+	</div>
+	<div id="main_wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="main">
+					{{each contentResult}}
+					<div class="col-md-4">
+						<a href="/contect/{{@$value._id}}"><img src="{{$value.img_url}}" /></a>
+						<p>{{$value.title}}</p>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+		<nav style="text-align:center;">
+			<div id="page" class="pagination"></div>
+		</nav>
+	</div>
+	{{include 'reseption/public/footer.html'}}
+	<script src="default/js/jquery-1.10.2.min.js"></script>
+	<!-- <script src="default/js/bootstrap.min.js"></script> -->
+	<script src="default/js/jqPaginator.js"></script>
+	<script>
+		$('#page').jqPaginator({
+			totalPages: {{ totalPages }},
+			visiblePages: 3,
+			currentPage: {{ page }},
+			onPageChange: function (num, type) {
+				console.log(num, type);
+				if (type == 'change') {
+					{{if pid}}
+					location.href = "/case?pid={{pid}}&page=" + num;
+					{{else}}
+					location.href = "/case?page=" + num;
+					{{/if}}
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

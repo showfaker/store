@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>逊然旖旎_博客_评论留言</title>
+    <link rel="icon" href="default/images/index/blog.ico" type="image/x-icon">
+	<meta name="keywords" content="评论留言">
+	<meta name="description" content="逊然旖旎、评论留言">
+	<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/service.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/bootstrap.min.css" />
+</head>
+
+<body>
+	{{include 'reseption/public/header.html'}}
+	<div class="service-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="guestbook clearfix">
+						<h2>给我留言</h2>
+						<textarea name="comment-input" id="comment-input" cols="80" rows="8" maxlength="50"></textarea>
+						<input type="button" value="发布" onclick="customer.commit.publish()">
+					</div>
+					<div class="comment">
+						<ul>
+							{{each connectResult}}
+							<li class="clearfix">
+								<div class="comment-item">
+									<div class="userlogo">
+										{{if $value.pic}}
+										<img src="{{$value.pic}}" />
+										{{else}}
+										<img src="/default/images/service/customer-header.png">
+										{{/if}}
+										<p class="username">{{$value.nickname}}</p>
+									</div>
+									<div class="comment-txt">
+										<p class="txt">{{$value.connect}}</p>
+										<div class="time">{{$value.add_time | dateFormat}}
+											<span>回复</span>
+										</div>
+									</div>
+								</div>
+								<!-- <ul class="com-list" style="display: none;">
+								<li>
+									<p class="uname">叶子<span>回复</span>行走的萝卜</p> 
+									<p class="ctxt clearfix">一起学习。<input type="button" value="回复"></p>
+								</li> 
+								<li style="display: none;">
+									<p>回复 <span class="uname"></span></p> 
+									<textarea></textarea> 
+									<input type="button" value="发表" class="fl">
+								</li>
+							</ul> -->
+							</li>
+							{{/each}}
+						</ul>
+						<nav style="text-align:center;">
+							<div id="page" class="pagination"></div>
+						</nav>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 遮罩层 -->
+	<div class="shadow">
+		<div class="shadow-box">
+			<div class="shadow-text"></div>
+			<input type="button" value="确定" class="shadow-btn" onclick="customer.commit.close()">
+		</div>
+	</div>
+	{{include 'reseption/public/footer.html'}}
+	<script src="default/js/jquery-1.10.2.min.js"></script>
+	<script src="default/js/jqPaginator.js"></script>
+	<script>
+		$('#page').jqPaginator({
+			totalPages: {{ totalPages }},
+			visiblePages: 3,
+			currentPage: {{ page }},
+			onPageChange: function (num, type) {
+				console.log(num, type);
+				if (type == 'change') {
+					location.href = "/service?page=" + num;
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
