@@ -26,7 +26,7 @@ const CONFIG = {
     rolling: true,  /*每次请求都会重新设置session*/
     renew: false
 };
-app.use(session(CONFIG, app));
+app.use(session(CONFIG, app));	//服务器端session的配置完毕
 //配置中间件及静态资源库
 app.use(bodyParser());
 //app.use(static('.'));         /*不安全*/
@@ -34,16 +34,16 @@ app.use(static(__dirname + '/static'));
 //配置模块
 render(app, {
     root: path.join(__dirname, 'views'),
-    extname: '.html',
+    extname: '.html',	//模板渲染文件类型	
     debug: process.env.NODE_ENV !== 'production',
     dateFormat:dateFormat=function(value){return sd.format(value, 'YYYY-MM-DD HH:mm');} /*扩展模板里面的方法*/
 });
 //启动路由
 app.use(Router.routes()).use(Router.allowedMethods());
-Router.use(index);
-Router.use('/admin', admin.routes());
+Router.use(index);	//前端路由
+Router.use('/admin', admin.routes());	//后台路由
 Router.use('/api', api.routes());
-app.listen(8006, () => {
+app.listen(8006, () => {	//端口号
     console.log('node.js serve start');
 });
 
