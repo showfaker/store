@@ -10,8 +10,12 @@ var svgCaptcha = require('svg-captcha');//验证码插件
 
 //配置中间件
 router.use(async (ctx, next) => {
+    /**
+     * https配置
+     */
+    ctx.set('Access-Control-Allow-Origin', 'null');
+    ctx.set('Access-Control-Allow-Credentials', 'true');
     ctx.state._host = 'http://' + ctx.request.header.host;//当前网址
-    // console.log(ctx.session);
     //查询数据库里面的导航栏数据
     let result = await DB.find('nav', {$or:[{"status": 1}, {"status": "1"}]}, {}, {
         sortJson: {
@@ -31,7 +35,14 @@ router.use(async (ctx, next) => {
     }
     //系统设置的网站备案号、qq、e-mai、地址
     let settingResult = await DB.find("setting", {});
-    ctx.state.setting = settingResult[0]
+    ctx.state.setting = settingResult[0];
+    //查询数据库的友情链接
+    let linkFromdb = await DB.find("link", {});
+    // let linkResult = [];
+    // for ({status} of linkFromdb) {//es6写法
+    //     console.log(status);
+    // }
+    ctx.state.linkSession = linkFromdb;
     await next()
 });
 /**
@@ -40,7 +51,6 @@ router.use(async (ctx, next) => {
 router.get('/', async (ctx) => {
     //系统设置的标题、logo图、关键字、描述
     let settingResult = await DB.find("setting", {});
-    // console.log(settingResult[0]);
     //查询轮播图数据
     let bannerResult = await DB.find("banner", {$or:[{"status": 1}, {"status": "1"}]}, {}, {
         sortJson: {
@@ -82,7 +92,7 @@ router.get('/cusCode', async (ctx) => {
         background: "#cc9966"
     });
     ctx.session.cusCode = captcha.text;
-    console.log("前台验证码:"+ctx.session.cusCode);
+    // console.log("前台验证码:"+ctx.session.cusCode);
     ctx.response.type = 'image/svg+xml';
     ctx.body = captcha.data;
 });
@@ -155,15 +165,19 @@ router.post('/toregister', async(ctx) => {
     let log_time = tools.getAddTime();//最新登录
     let findResname = await DB.find('customer', {"cusname": cusname});
     //判断注册用户是否存在
-    if (findResname.length > 0){//存在返回注册失败，用户存在无须注册
+    if (findResname.length > 0){//姓名存在返回注册失败，用户存在无须注册
         ctx.body={"message":"注册失败，用户存在无须注册","success":false}
-    } else {//不存在注册用户
-        let insertResgister = await DB.insert('customer', {"cusname": cusname, "telephone": cusphone, "nickname": cusnickname,
-    "password": cuspwd, "status": "1", "add_time": add_time, "log_time": log_time, "income": 100});
-        if (insertResgister){
-            ctx.body={"message":"注册成功","success":true}
-        } else {
-            ctx.body={"message":"注册失败，请重新注册","success":false}
+        let findNickname = await DB.find('customer', {"nickname": nickname});
+        if (findNickname.length > 0) {//昵称存在返回注册失败，当前昵称已使用
+            ctx.body={"message":"注册失败，当前昵称已使用","success":false}
+        } else {//不存在注册用户
+            let insertResgister = await DB.insert('customer', {"cusname": cusname, "telephone": cusphone, "nickname": cusnickname,
+            "password": cuspwd, "status": "1", "add_time": add_time, "log_time": log_time, "income": 100});
+                if (insertResgister){
+                    ctx.body={"message":"注册成功","success":true}
+                } else {
+                    ctx.body={"message":"注册失败，请重新注册","success":false}
+            }
         }
     }
 })
@@ -174,12 +188,23 @@ router.post('/toregister', async(ctx) => {
  */
 router.get('/dev', async (ctx) => {
     let devResult = await DB.find("articlecate", {"_id": DB.getObjectId('5c3c470f4b63680bd8f3cc41')});
-    let result = await DB.find("article", {"pid": '5c3c470f4b63680bd8f3cc41'});
+    let result = await DB.find("article", {"pid": '5c3c470f4b63680bd8f3cc41'},{
+        sortJson: {
+            "add_time": -1
+        }
+    });
     await ctx.render('reseption/dev', {
         list: result,
         devSetting: devResult[0]
     })
 });
+/**
+ * 跳转开发成果
+ */
+router.get('/dev/:id', async (ctx) => {
+    let id = ctx.params.id;
+    await ctx.render('reseption/product/'+id)
+})
 
 /**
  * 跳转到书香门第
@@ -194,7 +219,9 @@ router.get('/case', async (ctx) => {
     var articleArr = [];
     if (pid) {
         var contentResult = await DB.find("article", {"pid": pid}, {}, {
-            page,limit
+            page,limit,sortJson: {
+                "add_time": -1
+            }
         });
         var articleNum = await DB.count("article", {"pid": pid});
     } else {
@@ -203,7 +230,9 @@ router.get('/case', async (ctx) => {
         }
         //{"pid":{$in:articleArr}}
         var contentResult = await DB.find("article", {"pid": articleArr[0]}, {}, {
-            page,limit
+            page,limit,sortJson: {
+                "add_time": -1
+            }
         });
 
         var articleNum = await DB.count("article", {"pid": articleArr[0]}); 
@@ -243,7 +272,10 @@ router.get('/info', async (ctx) => {
     if (pid) {
         var articleResult = await DB.find("article", {"pid": pid}, {}, {
             page,
-            limit
+            limit,
+            sortJson: {
+                "add_time": -1
+            }
         });
         var articleNum = await DB.count("article", {"pid": pid}); 
     } else {
@@ -251,7 +283,9 @@ router.get('/info', async (ctx) => {
             firstArr.push(cateResult[i]._id.toString());
         }
         var articleResult = await DB.find("article", {"pid": firstArr[0]}, {}, {
-            page,limit
+            page,limit,sortJson: {
+                "add_time": -1
+            }
         });
         var articleNum = await DB.count("article", {"pid": firstArr[0]}); 
     }
@@ -332,9 +366,7 @@ router.get('/about', async (ctx) => {
  */
 router.get('/contect/:id', async (ctx) => {
     let id = ctx.params.id;
-    let result = await DB.find("article", {"_id": DB.getObjectId(id)}, {}, {sortJson: {
-        "add_time": 1
-    }});
+    let result = await DB.find("article", {"_id": DB.getObjectId(id)});
     let catename = result[0].catename;
     let articlecateResult = await DB.find("articlecate", {"title": catename});
     if (articlecateResult[0].pid != "0") {//二级分类

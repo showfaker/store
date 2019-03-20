@@ -65,10 +65,8 @@ router.post('/manageAdd', async (ctx) => {
     }
 });
  router.get('/edit', async (ctx) => {
-     //console.log(ctx.query);
      let id = ctx.query.aid;
      let result = await DB.find('admin', DB.getObjectId(id));
-     //console.log(result);
      await ctx.render('admin/manage/maEdit', {
          list: result[0]
      })
