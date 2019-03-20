@@ -18,6 +18,11 @@ const ueditor = require('koa2-ueditor');//ueditor模块 富文本编辑器
 var DB = require('../model/db');        //数据库操作封装模块
 //配置中间件 获取url
 Router.use(async (ctx, next) => {
+    /**
+     * https配置
+     */
+    ctx.set('Access-Control-Allow-Origin', 'null');
+    ctx.set('Access-Control-Allow-Credentials', 'true');
     //友情链接、导航管理、用户管理、评论管理数据条
     let link_count = await DB.count('link', {});
     let nav_count = await DB.count('nav', {});
@@ -45,13 +50,12 @@ Router.use(async (ctx, next) => {
         href: '/' }
      */
     let splitUrl = pathname.split('/');
-    //console.log(splitUrl);
     /*
     **********************************!!!!!!!!!!!!!!!开发模式!!!!!!!!!!!!!!!**********************************
     */
-    ctx.session.userinfo = {
-        username: "admin"
-    }
+    // ctx.session.userinfo = {
+    //     username: "admin"
+    // }
     //全局对象信息
     ctx.state._global = {
         url: splitUrl,

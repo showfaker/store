@@ -15,7 +15,6 @@ router.get('/', async (ctx) => {
  * /admin/changeStatus
  */
 router.get('/changeStatus', async (ctx) => {
-    // console.log(ctx.query);
     var db=ctx.query.collectionName; /*数据库*/
     var attr=ctx.query.attr; /*属性*/
     var id=ctx.query.id; /*更新的 id*/
@@ -51,12 +50,10 @@ router.get('/changeSort', async (ctx) => {
     let collection = ctx.query.collection;
     let id = ctx.query.id;
     var result = await DB.find(collection, {"_id": DB.getObjectId(id)});
-    // console.log(result);
     if (result){
         var json = {
             sort
         };
-        // console.log(json);
         var updateResult = await DB.update(collection, {"_id": DB.getObjectId(id)}, json);
         if (updateResult.result.ok){
             ctx.body={"message":"更新成功","success":true}

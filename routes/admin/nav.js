@@ -37,7 +37,6 @@ router.get('/add', async (ctx) => {
  */
 router.post('/doAdd', async (ctx) => {
     try {
-        // console.log(ctx.request.body);
         var title = ctx.request.body.title;
         var url = ctx.request.body.url;
         var icon = ctx.request.body.icon;
@@ -52,7 +51,6 @@ router.post('/doAdd', async (ctx) => {
             status,
             add_time
         }
-        // console.log(json);
         let addResult = await DB.insert('nav', json);
         if (addResult.result.ok) {
             ctx.redirect(ctx.state._host + '/admin/nav');

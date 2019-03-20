@@ -20,7 +20,6 @@ router.get('/', async (ctx) => {
             'add_time': -1
         }
     });
-    //console.log(count);
     var totalPages = Math.ceil(count/limit);
     await ctx.render('admin/article/index', {
         list: result,
@@ -83,7 +82,6 @@ router.post('/doAdd', tools.multer().single('img_url'), async (ctx) => {
 router.get('/edit', async (ctx) => {
     var id = ctx.query.aid;
     let result = await DB.find('article', {"_id": DB.getObjectId(id)});
-    // console.log(result[0]);
     var findResult = await DB.find('articlecate', {});
     var catelist = tools.cateToList(findResult);
     await ctx.render('admin/article/article-edit', {

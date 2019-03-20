@@ -52,7 +52,6 @@ router.get('/add', async (ctx) => {
     add_time:   新增时间
  */
 router.post('/doAdd', tools.multer().single("pic"), async (ctx) => {
-    // console.log(ctx.req.file);
     let title = ctx.req.body.title;
     let url = ctx.req.body.url;
     let pic = ctx.req.file ? ctx.req.file.path.substr(7) :'';
@@ -62,7 +61,6 @@ router.post('/doAdd', tools.multer().single("pic"), async (ctx) => {
     let json = {
         title,url,pic,status,sort,add_time
     }
-    // console.log(json);
     let insertResult = await DB.insert('banner', json);
     if (insertResult.result.ok) {
         ctx.redirect(ctx.state._host + '/admin/banner');

@@ -22,7 +22,6 @@ router.get('/getout', async (ctx) => {
  * 获取信息登录后台管理
  */
 router.post('/tologin', async (ctx) => {
-    //console.log(ctx.request.body);
     let username = ctx.request.body.username;
     let password = tools.md5(ctx.request.body.password);
     let captcha = ctx.request.body.code;
@@ -32,7 +31,6 @@ router.post('/tologin', async (ctx) => {
             let msg = await DB.find('admin', {"username": username, "password": password});
             if (msg.length > 0) {
                 if (msg[0].status == 1) {//用户当前状态可使用
-                    //console.log('成功');
                     ctx.session.userinfo = msg[0];
                     ctx.redirect(ctx.state._host + '/admin');
                     //更新用户登录时间
@@ -74,7 +72,6 @@ router.get('/code', async (ctx) => {
         background: "#cc9966"
     });
     ctx.session.code = captcha.text;
-    console.log(ctx.session.code);
     ctx.response.type = 'image/svg+xml';
     ctx.body = captcha.data;
     //req.session.captcha = captcha.text;
