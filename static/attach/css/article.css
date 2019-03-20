@@ -1,0 +1,17 @@
+.form-horizontal{
+    border: 1px solid #eee;
+}
+#myTab{
+    height: 44px;
+}
+.nav-tabs{
+    border-bottom: none;
+    position: relative;
+    top: 0px;
+}
+#myTabContent{
+    border: none;
+}
+.article-content{
+    height: 500px!important;
+}

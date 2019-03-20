@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+#main_wrapper{ background:#fff;}
+.main{ width:100%;padding:60px 0 102px 0;}
+.main p{
+	line-height: 2;
+	width: 100%;
+	padding: 5px 0px;
+	display: block;
+	font-size: 16px;
+	text-align: center;
+}
+.main img{ display: block; width: 200px; height: 180px;margin: 0 auto;}
+
+.main_center{ height:417px; width:1140px; margin:0 auto;padding-top: 50px;}
+.main_center dl{ border-bottom:1px solid #eeeeee; padding-bottom:44px;}
+.main_center dl dt{ font-size:16px; color:#323433; text-align:center; margin-bottom:24px;}
+.main_center dl dd{ width:340px; float:left; margin-right:60px;}
+.main_center dl dd p{ text-align:center; font-size:14px; color:#666666; margin-top:18px;}
+.main_center dl dd img {width: 340px;height: 190px;}
+
+/*内容*/
+.content{
+	background: #fff;
+	padding: 60px;
+}
+@media screen and (max-width:768px) {
+	.main {
+		padding: 30px 0 50px 0;
+	}
+	.content{
+		padding: 30px 15px;
+	}
+	.content img{
+		width: 100%;
+		height: auto;
+	}
+}
