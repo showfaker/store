@@ -1,0 +1,165 @@
+.register-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    background-color: #F5F5F6;
+    z-index: 99;
+  }
+  .register-wrapper .register{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 530px;
+    background-color: #fff;
+  }
+  .register-wrapper .register header{
+    position: relative;
+    padding: 25px 0;
+    height: 50px;
+  }
+  .register-wrapper .register header h1{
+    margin: auto;
+    height: 50px;
+    line-height: 50px;
+    width: 300px;
+    text-align: center;
+    line-height: 50px;
+    color: #00B7D3;
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .register-wrapper .register header div{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+  }
+  .register-wrapper .register header div a{
+    margin: 5px;
+    color:#00B7D3;
+    text-decoration: none;
+  }
+  .register-wrapper .register > div{
+    position: relative;
+    margin: 25px  auto;
+    height: 40px;
+    width: 320px;
+    text-align: center;
+    font-size: 0;
+  }
+  .register-wrapper .register > div span,.register-wrapper .register > div input{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #00B7D3;
+    vertical-align: middle;
+  }
+  .register-wrapper .register > div span{
+    width: 40px;
+    font-size: 18px;
+    color:#fff;
+    background-color:#00B7D3;
+  }
+  .register-wrapper .register > div input {
+    /* padding-left: 10px; */
+    width: 250px;
+    font-size: 14px;
+    outline: none;
+    padding: 0 0 0 10px;
+  }
+  .register-wrapper .register > div div{
+    position: absolute;
+    top: 0;
+  }
+  .register-wrapper .register > div .tips{
+    right: -175px;
+    padding: 10px;
+    width: 150px;
+    font-size: 12px;
+    border: 1px solid #4DBC60;
+    border-radius: 5px ;
+    box-shadow:0 0 1px 1px #eee ;
+  }
+  .register-wrapper .register > div .tips:before{
+    content:'';
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #4DBC60;
+  }
+  .tips-name{
+      display: none;
+  }
+  .tips-phone{
+    display: none;
+}
+.tips-nickname{
+    display: none;
+}
+.tips-pwd{
+    display: none;
+}
+.tips-pwd2{
+    display: none;
+}
+  .register-wrapper .register > div .right {
+    right: -15px;
+    color:green;
+    font-size: 28px;
+  }
+  .register-wrapper .register > div .error {
+    right: -155px;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    text-align: left;
+    color:red;
+  }
+  .error-name{
+      display: none;
+  }
+  .error-phone{
+    display: none;
+}
+.error-nickname{
+    display: none;
+}
+.error-pwd{
+    display: none;
+}
+.error-pwd2{
+    display: none;
+}
+  .register-wrapper .register > P {
+    text-align: center;
+  }
+  .register-wrapper .register > P input{
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #00B7D3;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .register-wrapper .register .result {
+    width: 900px;
+    font-size: 16px;
+    color: green;
+    display: none;
+  }
+  .register-wrapper .register .red{
+    width: 900px;
+    font-size: 16px;
+    color: red;
+    display: none;
+  }

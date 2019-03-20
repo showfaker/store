@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+/* 网页底部 */
+#footer-wrapper{height:138px;background:#363636;}
+#footer-wrapper .footer-inner{width:1140px;height:118px;background:#363636; margin:0 auto; padding-top:20px;}
+.footer-inner p{color:#727272; text-align:center;line-height:30px;}
+.footer-inner p a{color:#727272;}
+
+/* 开发文档 */
+body{
+	padding-top: 110px;
+}
+.clear .service{
+	cursor: pointer;
+}
+/* 用户管理 */
+.customer{
+	width: 100%;
+	background: #000;
+	padding: 3px 0;
+}
+.customer .customer-manage{
+	width: 1140px;
+    margin: 0 auto;
+	overflow: hidden;
+}
+.customer-manage i{
+	font-size: 16px;
+	color: #fff;
+	margin-right: 5px;
+}
+.customer a{
+	color: #f10d0d;
+}
+.customer-register{
+	margin-left: 15px;
+}

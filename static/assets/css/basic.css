@@ -1,0 +1,21 @@
+#navbar{
+    background: #404040;
+}
+#navbar .light-blue>a{
+    background: #404040;
+}
+.form-horizontal .form-group{
+    height: 44px;
+}
+.list-img{
+    width: 80px;
+    height: 80px;
+}
+.edit-img{
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.system-img{
+    height: 100px;
+}
